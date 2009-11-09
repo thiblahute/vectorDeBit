@@ -10,7 +10,8 @@ package upla.vector.de.bit
 /** */
 interface Director_Descriptor
 {
-	/** */
+	/** 
+     */
 	public String getDescripcion()
 	{
 	
