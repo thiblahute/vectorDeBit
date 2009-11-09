@@ -12,6 +12,9 @@ public class Descriptor_VectorBit implements Director_Descriptor
 {
 	private int final bajo_;
 	private int final alto_;
+	private boolean final optEspacio;
+	private boolean final optRapidez;
+	private boolean final chequeado;
 	
 	/** 
      *   Instanciar el descriptor de vector de Bit
@@ -30,26 +33,24 @@ public class Descriptor_VectorBit implements Director_Descriptor
      */
 	public void Descriptor_Vector()
 	{
+        bajo_ = 0;
+        alto_ = 127;
 	}
 	
-	/** */
-	public void optRapidez(int boolean, boolean chequeadop)
-	{
-      	
-	}
-	
-	/** @return Boolean saying if the optimization 
+	/** @return Boolean saying if the space optimization 
       *         feature is enabled or not.
-     */
+     **/
 	public boolean optimizarEspacio()
 	{
-	
+	    return this.optEspacio;
 	}
 	
-	/** */
+	/** @return Boolean saying if the speed optimization 
+      *         feature is enabled or not.
+     **/
 	public boolean optimizarRapidez()
 	{
-	
+      return this.optRapidez;	
 	}
 	
     /**
@@ -79,6 +80,5 @@ public class Descriptor_VectorBit implements Director_Descriptor
 	/** */
 	public void and (VectorBit bs)
 	{
-	
 	}
 }

@@ -12,6 +12,6 @@ interface Director
 	/** */
 	public Director_Builder hacerBuilder(Object dd)
 	{
-	
+      return new Director_Builder();	
 	}
 }
