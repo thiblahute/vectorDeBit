@@ -5,7 +5,7 @@
   @ Author : David Vargas; Thibault Saunier, Carlos Lagos
 */
 
-package upla.vector.de.bit
+package upla.vector.de.bit;
 
 /** */
 public class Descriptor_VectorBit implements Director_Descriptor
@@ -70,14 +70,14 @@ public class Descriptor_VectorBit implements Director_Descriptor
 	
 	/** */
     @override
-	public String getDescripcion()
+	public String getDescripcion ()
 	{
         string = new string ("");
         return	
 	}
 	
 	/** */
-	public void and(VectorBit bs)
+	public void and (VectorBit bs)
 	{
 	
 	}

@@ -5,14 +5,15 @@
   @ Author : David Vargas; Thibault Saunier, Carlos Lagos
 */
 
-package upla.vector.de.bit
+package upla.vector.de.bit;
 
 /** */
 interface Director_builder
 {
-	/** */
+	/** 
+     */
 	public Object build()
 	{
-	
+	    return new object();
 	}
 }

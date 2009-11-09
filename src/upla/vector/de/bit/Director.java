@@ -4,7 +4,7 @@
   @ Date : 02/11/2009
   @ Author : David Vargas; Thibault Saunier, Carlos Lagos
 */
-package upla.vector.de.bit
+package upla.vector.de.bit;
 
 /** */
 interface Director
