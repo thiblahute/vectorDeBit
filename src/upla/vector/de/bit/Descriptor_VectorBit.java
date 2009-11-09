@@ -5,6 +5,8 @@
   @ Author : David Vargas; Thibault Saunier, Carlos Lagos
 */
 
+package upla.vector.de.bit
+
 /** */
 public class Descriptor_VectorBit implements Director_Descriptor
 {
@@ -12,6 +14,7 @@ public class Descriptor_VectorBit implements Director_Descriptor
 	private int final alto_;
 	
 	/** 
+     *   Instanciar el descriptor de vector de Bit
      *   @param bajo El limite inferior
      *   @param alto El limite superior
      **/
@@ -22,7 +25,9 @@ public class Descriptor_VectorBit implements Director_Descriptor
 	}
 
 	
-	/** */
+	/** 
+     *   Instanciar el descriptor de vector de Bit
+     */
 	public void Descriptor_Vector()
 	{
 	}
