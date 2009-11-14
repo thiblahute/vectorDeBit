@@ -9,172 +9,187 @@ package upla.vector.de.bit;
 
 import java.util.*;
 import java.lang.*;
+import java.text.*;
 
-/** */
 public class VectorBit_jv implements VectorBit
 {
-    private boolean[] bits;
-    private Descriptor_VectorBit descriptorVector_;
+    List<Boolean> bits;
 
 	/** Instanciate a vectorDeBit
      *  @param toConvert the #integer to convert and put in the vector of bit
-     *  @param descriptorVector the #Descriptor_VectorBit to use to configure the new vector of bit
      **/
-	public VectorBit_jv (int toConvert, Descriptor_VectorBit descriptorVector)
+	public VectorBit_jv (int toConvert)
       {
         int i = 0;
         String binStr = Integer.toBinaryString(toConvert);
-        int arraySize = descriptorVector.getLimiteSuperior()-descriptorVector.getLimiteInferior();
+        StringCharacterIterator binStrIter = new StringCharacterIterator (binStr); 
 
-        descriptorVector_ = descriptorVector;
+        bits = new ArrayList<Boolean>();
 
-        bits = new boolean[arraySize];
-
-        for (i = binStr; i < binStr.lenght(); i = i++)
+        for(char c = binStrIter.first(); c != CharacterIterator.DONE; c = binStrIter.next())
           {
-            char aChar = binStr.getCharAt (i) 
-            if (aChar == '0')
-              bits[i] = false;
+            if (c == '0')
+              this.bits.add (false);
             else
-              bit[i] = true;
+              this.bits.add (true);
           }
       }
 
-    /** Implements the test metods of the VectorBit interface.
-     *  @param indice indicate the indice of the bit we want to get.
-     *  @return the value of the concerned bit. 
-     **/
-    @overide
     public boolean test (int indice)
       {
-        return this.bits[indice];
+        return this.bits.get (indice);
       }
 
-    /** Sets the bit as #true
-      * @param indice the indice of the bit we want to set as true
-      * @return #true if the opertion was change otherwise #false
-      **/ 
 	public boolean set(int indice)
 	{
-      if (indice < this.descriptorVector.getLimiteInferior() 
-                  || indice < this.descriptorVector.getLimiteInferior()) 
+      if (indice < 0 || indice > this.bits.size ())
             return false;
-      else if (this.bits[indice] == true)
+      else if (this.bits.get (indice) == true)
             return false;
       else
-          this.bits[indice] = true;
-
+          this.bits.set (indice, true);
       return true;
 	
 	}
 	
-    /** Sets the bit as #false
-      * @param indice the indice of the bit we want to set as true
-      * @return #true if the value was change otherwise #false
-      **/ 
 	public boolean unset(int indice)
 	{
-      if (indice < this.descriptorVector.getLimiteInferior() 
-                  || indice < this.descriptorVector.getLimiteInferior()) 
-        {
+      if (indice < 0 || indice > this.bits.size ())
             return false;
-        }
-      else if (this.bits[indice] == false)
-        {
-            this.bits[indice] = true;
+      else if (this.bits.get (indice) == false)
             return false;
-        }
       else
-        {
-          this.bits[indice] = false;
-        }
+          this.bits.set (indice, false);
 
       return true;
 	}
 	
-    /** Sets the bit as #false if it was true, and at #true otherwise
-      * @param indice the indice of the bit we want to  negate
-      * @return #true if the value was change otherwise #false
-      **/ 
 	public boolean negar(int indice)
 	{
-      if (indice < this.descriptorVector.getLimiteInferior() || indice < this.descriptorVector.getLimiteInferior()) 
+      if (indice < 0 )
             return false;
-      else if (this.bits[indice] == false)
-          this.bits[indice] = true;
+      else if (!this.test (indice))
+          this.set (indice);
       else
-          this.bits[indice] = false;
+          this.unset (indice);
 
       return true;
 	}
 	
-	/** */
 	public void or(VectorBit bs)
-	{
-      Descriptor_VectorBit bs_descriptor = bs.getDescriptor_VectorBit();
+      {
 
-      if ( bs_descriptor.getLimiteSuperior() != this.descriptorVector_.getLimiteSuperior())
-            return;
-      else if ( bs_descriptor.getLimiteInferior() != this.descriptorVector_.getLimiteInferior())
-            return;
-      else
-        {
-            int i = 0;
-            boolean[] bsBits = bs.getBits();
+        int i;
 
-        }
-        	
-	}
+        for (i=0; i < this.bits.size (); i++)
+          {
+            if (bs.test (i) || this.test (i))
+              this.set (i);
+            else 
+              this.unset (i);
+          }
+      }
 	
-	/** */
-	public void xor(VectorBit_jv bs)
+	public void xor(VectorBit bs)
 	{
-	
+        int i;
+
+        for (i=0; i < this.bits.size (); i++)
+          {
+            if ((bs.test (i) || this.test (i)) && bs.test (i) != this.test (i))
+              this.set (i);
+            else 
+              this.unset (i);
+          }
 	}
+
+	public void and (VectorBit bs)
+      {
+        int i;
+
+        for (i=0; i < this.bits.size (); i++)
+          {
+            if (this.test (1) && bs.test (i) == this.test (i))
+              this.set (i);
+            else 
+              this.unset (i);
+          }
+
+      }
 	
-	/** */
-	public void copiar(VectorBit )
+	public void copiar(VectorBit bs)
 	{
-	
+        int i;
+
+        for (i=0; i < this.bits.size (); i++)
+          {
+            if (this.test (1) && bs.test (i) == this.test (i))
+              this.set (i);
+            else 
+              this.unset (i);
+          }
 	}
 	
-	/** */
 	public void iterator()
 	{
-	
+        ;	
 	}
 	
-	/** */
 	public void builder()
 	{
-	
+        ;	
 	}
 	
-	/** */
-	public String toString()
-	{
-	
-	}
 
-	/** */
+	public String toString()
+      {
+        int i = 0;
+        String returnStr = new String ();
+
+        for (boolean bool = this.bits.get (i); i < this.bits.size(); bool = this.bits.get (i))
+          {
+            if (bool)
+              returnStr +=  '1';
+            else
+              returnStr +=  '0';
+
+          }
+        return returnStr;
+      }
+
+    /**
+     *   Creates the vector of bit using the builder design patern
+     *   @note it should be implemented for the next part
+     **/
 	public VectorBit buildVectorBit(VectorBit val)
 	{
-              
+        return null;
 	}
 
-    /** bits assesor.
-      * @return the bits property
-      **/
-    public Descriptor_VectorBit getBits ()
+	public boolean hasNext()
       {
-        return this.bits;
+        return true;
       }
 
-    /** descriptorVector_ assesor.
-      * @return the descriptorVector_ property
-      **/
-    public Descriptor_VectorBit getDescriptor_VectorBit ()
+	public boolean getNext()
       {
-        return this.descriptorVector_;
+        return true;
+      }
+	/** */
+	public int position()
+      {
+        return 0;
+      }
+	/** */
+	public int skipToSet()
+      {
+        return 0;
+      }
+	/** */
+	public int skipToUnset()
+      {
+        return 0;
       }
 }
+
+
