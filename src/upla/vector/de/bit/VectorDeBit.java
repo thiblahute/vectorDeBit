@@ -1,11 +1,9 @@
-package test;
+package upla.vector.de.bit;
 
-import upla.vector.de.bit.*;
-
-public class TestVectorBit 
+public class VectorDeBit
 { 
     public static void main(String[] args) { 
-        VectorBit vectorBit = new VectorBit_jv (17); 
+        VectorBit vectorBit = new VectorBit_jv (64); 
         String vectorStr = vectorBit.toString ();
 
         System.out.print(vectorStr);

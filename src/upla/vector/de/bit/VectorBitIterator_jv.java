@@ -28,12 +28,11 @@ public class VectorBitIterator_jv implements VectorBitIterator
 
 	public Boolean next()
       {
-        this.position++;
-
-        if (position > vectorBit.length())
+        if (position >= vectorBit.length())
             throw new NoSuchElementException(); 
 
-        return this.vectorBit.test(position);
+        return this.vectorBit.test(position++);
+
       }
 
 	public int position()
