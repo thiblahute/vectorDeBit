@@ -156,6 +156,7 @@ public class VectorBit_jv implements VectorBit
               returnStr +=  '0';
 
           }
+
         return returnStr;
       }
 
@@ -183,7 +184,7 @@ public class VectorBit_jv implements VectorBit
 
     public void remove ()
       {
-        this.iterator.remove();
+        throw new UnsupportedOperationException(); 
       }
 
     public void builder() 
@@ -203,7 +204,8 @@ public class VectorBit_jv implements VectorBit
           return -1;
 
         skippedElmentIndex = this.position();
-        this.set(skippedElmentIndex);
+
+        this.set(skippedElmentIndex+1);
 
         return skippedElmentIndex;
       }
@@ -220,7 +222,7 @@ public class VectorBit_jv implements VectorBit
           return -1;
 
         skippedElmentIndex = this.position();
-        this.unset(skippedElmentIndex);
+        this.unset(skippedElmentIndex+1);
 
         return skippedElmentIndex;
       }
