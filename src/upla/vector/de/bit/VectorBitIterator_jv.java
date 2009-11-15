@@ -55,7 +55,7 @@ public class VectorBitIterator_jv implements VectorBitIterator
         else 
             return -1;
         if (!this.hasNext())
-          return -1;
+            return -1;
 
         skippedElmentIndex = this.position();
 

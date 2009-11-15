@@ -149,19 +149,13 @@ public class VectorBit_jv implements VectorBit
 
 	public String toString()
       {
-
-        /* TODO use iterator */
-        int i = 0;
         String returnStr = new String ();
+        VectorBitIterator iter = new VectorBitIterator_jv (this); 
 
-        for (boolean bool = this.bits.get (i); i < this.bits.size(); bool = this.bits.get (i))
-          {
-            if (bool)
-              returnStr +=  '1';
-            else
-              returnStr +=  '0';
-
-          }
+        while (iter.hasNext()) { 
+            Boolean b = iter.next();               
+            returnStr += (b.booleanValue() ? "1" : "0"); 
+        } 
 
         return returnStr;
       }
