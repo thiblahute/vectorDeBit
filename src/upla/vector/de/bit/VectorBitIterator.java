@@ -10,7 +10,7 @@ package upla.vector.de.bit;
 import java.util.Iterator;
 
 
-public interface VectorIterator extends Iterator<Boolean>
+public interface VectorBitIterator extends Iterator<Boolean>
 {
 	/** 
      *  Gets the current position of the iterator

@@ -7,29 +7,38 @@
 
 package upla.vector.de.bit;
 
-/** Interface of the vector of bit, it should be extended by other concrete classes */
-public class VectorIterator_jv implements VectorIterator
-{
-    public VectorIterator_jv (VectorBit_jv bs)
-      {
+import java.util.*;
 
+/** Interface of the vector of bit, it should be extended by other concrete classes */
+public class VectorBitIterator_jv implements VectorBitIterator
+{
+    private final VectorBit vectorBit; 
+    private int position;
+
+    public VectorBitIterator_jv (VectorBit bs)
+      {
+        this.vectorBit = bs;
+        position = 0;
       }
 
 	public boolean hasNext()
       {
-        return this.iterator.hasNext ();
+        return position < vectorBit.length ();
       }
 
-	public Object next()
+	public Boolean next()
       {
-        iteratorPosition++;
-        return this.iterator.next();
+        this.position++;
+
+        if (position > vectorBit.length())
+            throw new NoSuchElementException(); 
+
+        return this.vectorBit.test(position);
       }
 
-	/** */
 	public int position()
       {
-        return iteratorPosition;
+        return this.position;
       }
 
     public void remove ()
@@ -50,7 +59,7 @@ public class VectorIterator_jv implements VectorIterator
 
         skippedElmentIndex = this.position();
 
-        this.set(skippedElmentIndex+1);
+        this.vectorBit.set(skippedElmentIndex+1);
 
         return skippedElmentIndex;
       }
@@ -67,7 +76,7 @@ public class VectorIterator_jv implements VectorIterator
           return -1;
 
         skippedElmentIndex = this.position();
-        this.unset(skippedElmentIndex+1);
+        this.vectorBit.unset(skippedElmentIndex+1);
 
         return skippedElmentIndex;
       }

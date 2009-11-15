@@ -72,4 +72,9 @@ public interface VectorBit
      */
 	public void and (VectorBit bs);
 
+	/** 
+     *  Get the length of the vector of bits
+     */
+	public int length ();
+
 }

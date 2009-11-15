@@ -21,7 +21,7 @@ public class VectorBit_jv implements VectorBit
     private int iteratorPosition=0;
     private Iterator iterator;
 
-	/** Instanciate a vectorDeBit
+	/** Instanciate a vectorBit
      *  @param toConvert the #integer to convert and put in the vector of bit
      **/
 	public VectorBit_jv (int toConvert)
@@ -149,6 +149,8 @@ public class VectorBit_jv implements VectorBit
 
 	public String toString()
       {
+
+        /* TODO use iterator */
         int i = 0;
         String returnStr = new String ();
 
