@@ -8,7 +8,7 @@
 package upla.vector.de.bit;
 
 /** Interface of the vector of bit, it should be extended by other concrete classes */
-public interface VectorBit extends VectorIterator
+public interface VectorBit
 {
     /** Implements the test metods of the VectorBit interface.
      *  @param indice indicate the indice of the bit we want to get.

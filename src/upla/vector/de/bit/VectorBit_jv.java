@@ -139,9 +139,13 @@ public class VectorBit_jv implements VectorBit
 	
     public void iterator()
       {
-        this.iterator = this.bits.iterator();
+        /* TODO this.iterator = this.bits.iterator()*/;
       }
 	
+    public int length ()
+      {
+        return this.bits.size ();
+      }
 
 	public String toString()
       {
@@ -162,69 +166,12 @@ public class VectorBit_jv implements VectorBit
 
 	public VectorBit buildVectorBit(VectorBit val)
 	{
-        return null;
+        throw new UnsupportedOperationException("Not supported yet.");
 	}
-
-	public boolean hasNext()
-      {
-        return this.iterator.hasNext ();
-      }
-
-	public Object next()
-      {
-        iteratorPosition++;
-        return this.iterator.next();
-      }
-
-	/** */
-	public int position()
-      {
-        return iteratorPosition;
-      }
-
-    public void remove ()
-      {
-        throw new UnsupportedOperationException(); 
-      }
 
     public void builder() 
       {
         throw new UnsupportedOperationException("Not supported yet.");
-      }
-
-	public int skipToSet()
-      {
-        int skippedElmentIndex;
-
-        if (this.hasNext())
-          this.next();
-        else 
-            return -1;
-        if (!this.hasNext())
-          return -1;
-
-        skippedElmentIndex = this.position();
-
-        this.set(skippedElmentIndex+1);
-
-        return skippedElmentIndex;
-      }
-
-	public int skipToUnset()
-      {
-        int skippedElmentIndex;
-
-        if (this.hasNext())
-          this.next();
-        else 
-            return -1;
-        if (!this.hasNext())
-          return -1;
-
-        skippedElmentIndex = this.position();
-        this.unset(skippedElmentIndex+1);
-
-        return skippedElmentIndex;
       }
 }
 
