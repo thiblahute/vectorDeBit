@@ -8,7 +8,7 @@
 package upla.vector.de.bit;
 
 /** Interface of the vector of bit, it should be extended by other concrete classes */
-public interface VectorBit extends Iterator
+public interface VectorBit extends VectorIterator
 {
     /** Implements the test metods of the VectorBit interface.
      *  @param indice indicate the indice of the bit we want to get.
@@ -67,7 +67,7 @@ public interface VectorBit extends Iterator
 	public String toString();
     
 	/** 
-     *   Applies the "and" logical operation.
+     *  Applies the "and" logical operation.
      *  @param bs the vector de bit with wich we will apply the or logical opertion.
      */
 	public void and (VectorBit bs);

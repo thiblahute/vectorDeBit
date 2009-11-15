@@ -10,10 +10,16 @@ package upla.vector.de.bit;
 import java.util.*;
 import java.lang.*;
 import java.text.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
 
 public class VectorBit_jv implements VectorBit
 {
-    List<Boolean> bits;
+    ArrayList<Boolean> bits;
+    private int iteratorPosition=0;
+    private Iterator iterator;
 
 	/** Instanciate a vectorDeBit
      *  @param toConvert the #integer to convert and put in the vector of bit
@@ -58,6 +64,7 @@ public class VectorBit_jv implements VectorBit
             return false;
       else if (this.bits.get (indice) == false)
             return false;
+
       else
           this.bits.set (indice, false);
 
@@ -130,15 +137,10 @@ public class VectorBit_jv implements VectorBit
           }
 	}
 	
-	public void iterator()
-	{
-        ;	
-	}
-	
-	public void builder()
-	{
-        ;	
-	}
+    public void iterator()
+      {
+        this.iterator = this.bits.iterator();
+      }
 	
 
 	public String toString()
@@ -157,10 +159,6 @@ public class VectorBit_jv implements VectorBit
         return returnStr;
       }
 
-    /**
-     *   Creates the vector of bit using the builder design patern
-     *   @note it should be implemented for the next part
-     **/
 	public VectorBit buildVectorBit(VectorBit val)
 	{
         return null;
@@ -168,27 +166,63 @@ public class VectorBit_jv implements VectorBit
 
 	public boolean hasNext()
       {
-        return true;
+        return this.iterator.hasNext ();
       }
 
-	public boolean getNext()
+	public Object next()
       {
-        return true;
+        iteratorPosition++;
+        return this.iterator.next();
       }
+
 	/** */
 	public int position()
       {
-        return 0;
+        return iteratorPosition;
       }
-	/** */
+
+    public void remove ()
+      {
+        this.iterator.remove();
+      }
+
+    public void builder() 
+      {
+        throw new UnsupportedOperationException("Not supported yet.");
+      }
+
 	public int skipToSet()
       {
-        return 0;
+        int skippedElmentIndex;
+
+        if (this.hasNext())
+          this.next();
+        else 
+            return -1;
+        if (!this.hasNext())
+          return -1;
+
+        skippedElmentIndex = this.position();
+        this.set(skippedElmentIndex);
+
+        return skippedElmentIndex;
       }
-	/** */
+
 	public int skipToUnset()
       {
-        return 0;
+        int skippedElmentIndex;
+
+        if (this.hasNext())
+          this.next();
+        else 
+            return -1;
+        if (!this.hasNext())
+          return -1;
+
+        skippedElmentIndex = this.position();
+        this.unset(skippedElmentIndex);
+
+        return skippedElmentIndex;
       }
 }
 
