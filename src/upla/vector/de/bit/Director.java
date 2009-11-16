@@ -6,9 +6,9 @@
 */
 package upla.vector.de.bit;
 
-/** */
+/** Interface Director*/
 interface Director
 {
-	/** */
+	/** Director_Builder crea hacerBuilder*/
 	public Director_Builder hacerBuilder();
 }
