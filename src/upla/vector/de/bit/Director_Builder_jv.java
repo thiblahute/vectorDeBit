@@ -11,12 +11,8 @@ package upla.vector.de.bit;
 public class Director_Builder_jv implements Director_Builder
 {
 /*
-    Director_Builder Director_Builder_jv()
-      {
-      }
-TODO see if needed */
-
-	/** 
+	/**
+     *   Instanciate a builder Vector of bit.
      */
 	public Object build()
 	{

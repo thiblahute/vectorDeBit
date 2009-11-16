@@ -11,6 +11,7 @@ package upla.vector.de.bit;
 interface Director_Builder 
 {
 	/** 
+     *  Instanciate an object which actually.
      */
 	public Object build();
 }

@@ -9,6 +9,6 @@ package upla.vector.de.bit;
 /** */
 interface Director
 {
-	/** */
+	/** Instanciate a DirectorBuilder */
 	public Director_Builder hacerBuilder();
 }
