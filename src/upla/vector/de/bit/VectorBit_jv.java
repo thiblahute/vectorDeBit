@@ -56,13 +56,15 @@ public class VectorBit_jv implements VectorBit
 	public boolean set(int indice)
 	{
       if (indice < 0 || indice > this.bits.size ())
+        {
+            throw new UnsupportedOperationException("Bad indice");
             return false;
+        }
       else if (this.bits.get (indice) == true)
             return false;
       else
           this.bits.set (indice, true);
       return true;
-	
 	}
 	
 	public boolean unset(int indice)
@@ -95,6 +97,9 @@ public class VectorBit_jv implements VectorBit
 
         int i;
 
+        if (bs.length () > this.length ())
+            throw new UnsupportedOperationException("Operation impossible");
+
         for (i=0; i < this.bits.size (); i++)
           {
             if (bs.test (i) || this.test (i))
@@ -107,6 +112,12 @@ public class VectorBit_jv implements VectorBit
 	public void xor(VectorBit bs)
 	{
         int i;
+
+        if (bs.length ()> this.length ())
+          {
+            throw new UnsupportedOperationException("Operation impossible");
+            return;
+          }
 
         for (i=0; i < this.bits.size (); i++)
           {
@@ -121,9 +132,15 @@ public class VectorBit_jv implements VectorBit
       {
         int i;
 
+        if (bs.length () > this.length ())
+          {
+            throw new UnsupportedOperationException("Operation impossible");
+            return;
+          }
+
         for (i=0; i < this.bits.size (); i++)
           {
-            if (this.test (1) && bs.test (i) == this.test (i))
+            if (this.test (i) == true && bs.test (i) == this.test (i))
               this.set (i);
             else 
               this.unset (i);
