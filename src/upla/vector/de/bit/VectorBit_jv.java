@@ -21,6 +21,13 @@ public class VectorBit_jv implements VectorBit
     private int iteratorPosition=0;
     private Iterator iterator;
 
+	/**
+     *   Instanciate a vectorBit
+     **/
+	public VectorBit_jv ()
+      {
+        ; /* Interesting */
+      }
 	/** Instanciate a vectorBit
      *  @param toConvert the #integer to convert and put in the vector of bit
      **/
@@ -136,11 +143,6 @@ public class VectorBit_jv implements VectorBit
               this.unset (i);
           }
 	}
-	
-    public void iterator()
-      {
-        /* TODO this.iterator = this.bits.iterator()*/;
-      }
 	
     public int length ()
       {

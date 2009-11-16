@@ -50,11 +50,6 @@ public interface VectorBit
      **/
 	public void copiar(VectorBit bs);
 
-	/** 
-      * Permit to enable the iterator
-     **/
-	public void iterator();
-	
     /**
      *   Creates the builder, it should be implemented for the next part
      **/
