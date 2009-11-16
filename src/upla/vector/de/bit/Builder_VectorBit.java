@@ -8,7 +8,7 @@
 package upla.vector.de.bit;
 
 
-/** */
+/** Interface Builder_VectorBit */
 interface Builder_VectorBit
 {
     /** 

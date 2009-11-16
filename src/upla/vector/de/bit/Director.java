@@ -6,7 +6,7 @@
 */
 package upla.vector.de.bit;
 
-/** */
+/** Interface Director*/
 interface Director
 {
 	/** Instanciate a DirectorBuilder */
